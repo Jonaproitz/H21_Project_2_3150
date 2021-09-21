@@ -28,6 +28,21 @@ int main(){
     eigval.print();
     eigvec.print();
 
+
+    // Find analytical eigenvalues and eigenvectors
+    double pi = arma::datum::pi;
+    arma::vec lam = arma::vec(N);
+    arma::mat V = arma::mat(N, N);
+    for (int i = 1; i <= N; i++){
+        lam(i-1) = d + 2*a * cos(i * pi / (N + 1));
+        for (int j = 1; j <= N; j++){
+            V(i-1, j-1) = sin(j * i * pi / (N + 1));
+        }
+    }
+    arma::mat V_norm = arma::normalise(-V);
+    lam.print();
+    V_norm.print();
+
     // End program
     return 0;
 }
