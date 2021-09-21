@@ -13,11 +13,20 @@ int main(){
     // Setup tridiagonal matrix A
     arma::mat A = arma::mat(N, N).fill(0.);
     arma::vec b = arma::vec(N).fill(d);
-    arma::vec ac = arma::vec(N-1). fill(a);
+    arma::vec ac = arma::vec(N-1).fill(a);
     A.diag() = b;
     A.diag(1) = ac;
     A.diag(-1) = ac;
     A.print();
+
+    //Find eigenvalues of A
+    arma::vec eigval;
+    arma::mat eigvec;
+
+    arma::eig_sym(eigval, eigvec, A);
+
+    eigval.print();
+    eigvec.print();
 
     // End program
     return 0;
