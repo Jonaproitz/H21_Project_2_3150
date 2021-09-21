@@ -1,7 +1,6 @@
 
-#include <iostream>
-#include <armadillo>
 
+#include "max_offdiag_symmetric.hpp"
 
 
 int main(){
