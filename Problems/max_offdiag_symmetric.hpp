@@ -17,5 +17,5 @@ double max_offdiag_symmetric(const arma::mat& A, int& k, int &l){
     }
     
     // Return matrix element
-    return A(k, l);
+    return a_max;
 }
