@@ -9,8 +9,8 @@ int main(){
         {0., -0.7, 1., 0.},
         {0.5, 0., 0., 1.}
         };
-    int k = 1;
-    int l = 1;
+    int k;
+    int l;
     double a = max_offdiag_symmetric(A, k ,l);
     std::cout << a << "\n";
     
