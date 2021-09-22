@@ -90,7 +90,7 @@ void jacobi_eigensolver(const arma::mat& A, double eps, arma::vec& eigenvalues,
 
 
     // Store eigenvalues and eigenvectors
-    eigenvalues = A_m.diag(0);
+    eigenvalues = arma::sort(A_m.diag(0));
     eigenvectors = R;
 
     // End function with no return
@@ -121,15 +121,16 @@ int main(){
 
 
     // Find solution with Jacobi rotation method
-    double eps = 1e-8;
+    double eps = 1e-12;
     arma::vec eigenvalues;
     arma::mat eigenvectors;
     int maxiter = 1e6, iterations;
     bool converged;
 
+    std::cout << "----\n";
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
     eigenvalues.print();
-
+    
     std::cout << iterations << "\n";
     std::cout << converged << "\n";
 
