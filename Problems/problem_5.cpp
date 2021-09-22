@@ -102,6 +102,25 @@ void jacobi_eigensolver(const arma::mat& A, double eps, arma::vec& eigenvalues,
 
 
 int main(){
+    // Initial constants
+    int N = 6;
+    double L = 1.;
+
+    double h = L / (N - 1);
+    double a = -1 / (h*h);
+    double d = 2 / h;
+
+    // Create matrix A of size 6x6
+    arma::mat A = create_tridiag_matrix(N, a, d);
+    
+    // Check analytical solution
+    arma::vec lam = arma::vec(N);
+    arma::mat V = arma::mat(N, N);
+    analytic_solution(lam, V, a, d);
+
+    lam.print();
+    V.print();
+
 
     // End program
     return 0;
