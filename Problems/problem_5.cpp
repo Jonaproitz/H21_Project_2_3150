@@ -112,7 +112,8 @@ int main(){
 
     // Create matrix A of size 6x6
     arma::mat A = create_tridiag_matrix(N, a, d);
-    
+    A.print();
+
     // Check analytical solution
     arma::vec lam = arma::vec(N);
     arma::mat V = arma::mat(N, N);
@@ -126,10 +127,14 @@ int main(){
     double eps = 1e-8;
     arma::vec eigenvalues;
     arma::mat eigenvectors;
-    int maxiter = 1e6;
-    int iterations;
+    int maxiter = 1e6, iterations;
     bool converged;
 
+    jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
+    eigenvectors.print();
+
+    std::cout << iterations << "\n";
+    std::cout << converged << "\n";
 
     // End program
     return 0;
