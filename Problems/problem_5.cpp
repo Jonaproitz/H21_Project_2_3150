@@ -6,10 +6,9 @@
 void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l){
     // Necessary computations before rotation
     double t, c, s;
-
     if (A(k, l) != 0){
         double tau = (A(l ,l) - A(k, k)) / (2*A(k, l));
-        if (tau > 0){
+        if (tau >= 0){
             t = 1 / (tau + sqrt(1 + tau*tau));
         }
         else{
@@ -27,7 +26,24 @@ void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l){
 
 
     // Perform a single jacobi rotation
+    double a_kk = A(k ,k), a_ll = A(l, l), a_kl = A(k, l);
+    A(k, k) = a_kk*c*c - 2*a_kl*c*s + a_ll*s*s;
+    A(l ,l) = a_ll*c*c + 2*a_kl*c*s + a_kk*s*s;
+    A(k, l) = 0;
+    A(l, k) = 0;
 
+    double a_ik;
+    for (int i = 0, i < A.n_rows(), i++){
+        if (i != k && i != l){
+            a_ik = A(i, k);
+
+            A(i, k) = a_ik * c - A(i, l)*s;
+            A(k, i) = A(i, k);
+
+            A(i, l) = A(i, l)*c - a_ik*s;
+            A(l, i) = A(i, l);
+        }
+    }
 
     // End funtion with no return
     return;
