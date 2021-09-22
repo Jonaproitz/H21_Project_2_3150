@@ -6,7 +6,7 @@
 int main(int argc, char* argv[]){
     // Add command line argument N
     if (argc != 2){
-        std::cout << "Please input 1 value";
+        std::cout << "Please input 1 value "<< argc << " was given\n";
         return 1;
     }
     int N = atoi(argv[1]);
