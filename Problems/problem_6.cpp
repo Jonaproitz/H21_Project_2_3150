@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[]){
     // Add command line argument N
-    if (argc != 1){
+    if (argc != 2){
         std::cout << "Please input 1 value";
         return 1;
     }
@@ -27,6 +27,15 @@ int main(int argc, char* argv[]){
 
     // Call eigensolver
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
+
+    // Write number of iterations to file
+    std::string filename = "iterations.txt";
+    std::ofstream ofile;
+    ofile.open(filename);
+
+    ofile << iterations << std::endl;
+
+    ofile.close();
 
 
     return 0;
