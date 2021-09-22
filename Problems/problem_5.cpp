@@ -122,6 +122,15 @@ int main(){
     V.print();
 
 
+    // Find solution with Jacobi rotation method
+    double eps = 1e-8;
+    arma::vec eigenvalues;
+    arma::mat eigenvectors;
+    int maxiter = 1e6;
+    int iterations;
+    bool converged;
+
+
     // End program
     return 0;
 }
