@@ -7,7 +7,7 @@ int main(){
     double L = 1.;
     double h = L/(N-1);
 
-    double a = -1/h*h;
+    double a = -1/(h*h);
     double d = 2/h;
 
     // Setup tridiagonal matrix A
