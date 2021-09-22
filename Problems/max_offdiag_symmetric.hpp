@@ -1,7 +1,5 @@
 
-
-#include <armadillo>
-#include <iostream>
+#include "tridiag_matrix.hpp"
 
 double max_offdiag_symmetric(const arma::mat& A, int& k, int &l){
     int n = A.n_rows - 1;
