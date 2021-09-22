@@ -3,3 +3,6 @@ import matplotlib.pyplot as plt
 import os
 
 
+N = [N for N in range(30)]
+
+
