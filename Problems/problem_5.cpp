@@ -14,16 +14,14 @@ void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l){
         else{
             t = -1 / (-tau + sqrt(1 + tau*tau));
         }
-
-        double c = 1 / sqrt(1 + t*t);
-        double s = c*t;
+        c = 1/sqrt(1 + t*t);
+        s = c*t;
     }
     else{
         t = 0;
         c = 1;
         s = 0;
     }
-
 
     // Perform a single jacobi rotation
     double a_kk = A(k ,k), a_ll = A(l, l), a_kl = A(k, l);
@@ -83,9 +81,8 @@ void jacobi_eigensolver(const arma::mat& A, double eps, arma::vec& eigenvalues,
         i++;
     }
 
-
     // Store number of iterations in integer "iterations"
-    iterations = i + 1;
+    iterations = i;
 
 
     // Set bool reference "converged" to true
@@ -131,7 +128,7 @@ int main(){
     bool converged;
 
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
-    eigenvectors.print();
+    eigenvalues.print();
 
     std::cout << iterations << "\n";
     std::cout << converged << "\n";
