@@ -39,7 +39,7 @@ void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l){
             A(i, k) = a_ik * c - a_il*s;
             A(k, i) = A(i, k);
 
-            A(i, l) = a_il*c - a_ik*s;
+            A(i, l) = a_il*c + a_ik*s;
             A(l, i) = A(i, l);
         }
     }
@@ -48,7 +48,7 @@ void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l){
         r_ik = R(i, k);
         r_il = R(i, l);
         R(i, k) = r_ik*c - r_il*s;
-        R(i, l) = r_il*c - r_ik*s;
+        R(i, l) = r_il*c + r_ik*s;
     }
 
     // End funtion with no return
@@ -121,7 +121,7 @@ int main(){
 
 
     // Find solution with Jacobi rotation method
-    double eps = 1e-12;
+    double eps = 1e-8;
     arma::vec eigenvalues;
     arma::mat eigenvectors;
     int maxiter = 1e6, iterations;
