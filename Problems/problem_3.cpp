@@ -1,5 +1,5 @@
-#include<iostream>
-#include<armadillo>
+
+#include "tridiag_matrix.hpp"
 
 int main(){
     // Setup constants 
@@ -11,12 +11,7 @@ int main(){
     double d = 2/h;
 
     // Setup tridiagonal matrix A
-    arma::mat A = arma::mat(N, N).fill(0.);
-    arma::vec b = arma::vec(N).fill(d);
-    arma::vec ac = arma::vec(N-1).fill(a);
-    A.diag() = b;
-    A.diag(1) = ac;
-    A.diag(-1) = ac;
+    arma::mat A = create_tridiag_matrix(N, a, d);
     A.print();
 
     //Find eigenvalues of A
@@ -30,18 +25,12 @@ int main(){
 
 
     // Find analytical eigenvalues and eigenvectors
-    double pi = arma::datum::pi;
     arma::vec lam = arma::vec(N);
     arma::mat V = arma::mat(N, N);
-    for (int i = 1; i <= N; i++){
-        lam(i-1) = d + 2*a * cos(i * pi / (N + 1));
-        for (int j = 1; j <= N; j++){
-            V(i-1, j-1) = sin(j * i * pi / (N + 1));
-        }
-    }
-    arma::mat V_norm = arma::normalise(-V);
+    analytic_solution(lam, V, a, d);
+    
     lam.print();
-    V_norm.print();
+    V.print();
 
     // End program
     return 0;
