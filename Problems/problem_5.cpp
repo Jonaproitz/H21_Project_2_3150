@@ -32,17 +32,22 @@ void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l){
     A(k, l) = 0;
     A(l, k) = 0;
 
-    double a_ik;
-    for (int i = 0, i < A.n_rows(), i++){
+    double a_ik, a_il;
+    for (int i = 0; i < A.n_rows; i++){
         if (i != k && i != l){
             a_ik = A(i, k);
+            a_il = A(i, l);
 
-            A(i, k) = a_ik * c - A(i, l)*s;
+            A(i, k) = a_ik * c - a_il*s;
             A(k, i) = A(i, k);
 
-            A(i, l) = A(i, l)*c - a_ik*s;
+            A(i, l) = a_il*c - a_ik*s;
             A(l, i) = A(i, l);
         }
+    }
+
+    for (int i = 0; A.n_rows(); i++){
+
     }
 
     // End funtion with no return
