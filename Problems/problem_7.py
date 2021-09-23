@@ -11,3 +11,9 @@ sol = np.transpose(np.array(solution))
 x = sol[0]
 V = sol[1:]
 
+plt.figure()
+
+for i in range(3):
+    plt.plot(x, V[i])
+
+plt.show()
