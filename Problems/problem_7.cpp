@@ -32,18 +32,24 @@ int main(){
 
     // Merge solutions with boundries
     x = join_cols(x_0, x, x_n);
-    arma::mat V = arma::mat(x.size(), x.size()-2);
+    arma::mat V = arma::mat(x.size(), x.size()-1);
     
-    V.row(0) = v_boundry.t();
+    arma::vec x_i;
+    x_i = x(0);
+    V.row(0) = join_rows(x_i, v_boundry.t());
+    
     for (int i = 1; i < x.size()-1; i++){
-        V.row(i) = eigenvectors.row(i-1);
+        x_i = {x(i)};
+        V.row(i) = join_rows(x_i, eigenvectors.row(i-1));
     }
-    V.row(x.size()-1) = v_boundry.t();
-
+    x_i = x(x.size()-1);
+    V.row(x.size()-1) = join_rows(x_i, v_boundry.t());
+    V.print();
+    
     // Write solution to binary file
-    arma::mat solution = join_rows(x, V);
-    std::string filename = "solution.bin";
-    solution.save(filename);
+    //arma::mat solution = join_rows(x, V);
+    //std::string filename = "solution.bin";
+    //solution.save(filename);
 
     return 0;
 }
