@@ -27,6 +27,7 @@ int main(){
     bool converged;
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
 
+
     // Set boundry conditions for v
     arma::vec v_boundry = arma::vec(eigenvalues.size()).fill(0.);
 
@@ -44,12 +45,11 @@ int main(){
     }
     x_i = x(x.size()-1);
     V.row(x.size()-1) = join_rows(x_i, v_boundry.t());
-    V.print();
     
+
     // Write solution to binary file
-    //arma::mat solution = join_rows(x, V);
-    //std::string filename = "solution.bin";
-    //solution.save(filename);
+    std::string filename = "solution.bin";
+    V.save(filename);
 
     return 0;
 }
