@@ -83,5 +83,31 @@
 \maketitle 
     
 
+\section*{Problem 1.}
+    Given
+    \begin{equation}
+            \gamma \frac{d^2 u(x)}{d x^2}
+        =   -Fu(x)
+        \label{eq4}
+    \end{equation}
+    with the definition $\hat{x} = x/L$, such that
+    \begin{equation*}
+            \frac{d\hat{x}}{d x}
+        =   \frac{1}{L}
+        \implies 
+            dx
+        =   L d\hat{x}
+    \end{equation*}
+    Equation \ref{eq4} can be written
+    \begin{equation*}
+            \gamma \frac{d^2 u(\hat{x})}{L^2 dx^2}
+        =   -Fu(\hat{x})
+        \implies
+            \frac{d^2 u(\hat{x})}{d \hat{x}^2}
+        =   -\frac{FL^2}{\gamma}u(\hat{x})
+        =   -\lambda u(\hat{x})
+    \end{equation*}
+    with $\lambda = FL^2/\gamma$.$\hfill\blacksquare$
+
    
 \end{document}
