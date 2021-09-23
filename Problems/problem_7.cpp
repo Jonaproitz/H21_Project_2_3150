@@ -3,7 +3,7 @@
 
 int main(){
     // Set constants
-    int n = 10;
+    int n = 6;
 
     float h = 1. / (n - 1);
 
@@ -27,11 +27,18 @@ int main(){
     bool converged;
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
 
-    // Set boundryconditions for v
-    arma::vec v_boundry = {0.};
+    // Set boundry conditions for v
+    arma::vec v_boundry = arma::vec(eigenvalues.size()).fill(0.);
 
+    // Merge solutions with boundries
+    x = join_cols(x_0, x, x_n);
+    arma::mat V = arma::mat(x.size(), x.size()-2);
     
-
+    V.row(0) = v_boundry.t();
+    for (int i = 1; i < x.size()-1; i++){
+        V.row(i) = eigenvectors.row(i-1);
+    }
+    V.row(x.size()-1) = v_boundry.t();
 
     return 0;
 }
