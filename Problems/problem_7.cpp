@@ -3,11 +3,11 @@
 
 int main(){
     // Set constants
-    int n = 6;
+    int n = 10;
 
-    float h = 1. / (n - 1);
+    float h = 1. / n;
 
-    int N = n - 2;
+    int N = n - 1;
 
     // Create x^ vector and boundry conditions
     arma::vec x = arma::linspace(h, 1. - h, N);
