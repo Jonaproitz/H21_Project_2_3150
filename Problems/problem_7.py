@@ -4,7 +4,5 @@ import pyarma
 
 
 filename = "solution.bin"
-solution = pyarma.mat
-solution.load(filename)
-
-
+solution = pyarma.mat()
+solution = np.array(solution.load(filename))
