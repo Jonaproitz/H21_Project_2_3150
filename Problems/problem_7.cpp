@@ -3,7 +3,7 @@
 
 int main(){
     // Set constants
-    int n = 10;
+    int n = 6;
 
     float h = 1. / n;
 
@@ -50,8 +50,10 @@ int main(){
     arma::vec lam = arma::vec(N);
     arma::mat U = arma::mat(N, N);
 
-    // Write analytic solution to binary file
     analytic_solution(lam, U, a, d);
+    U = join_cols(arma::vec(N).fill(v_boundry(0)).t(), U, arma::vec(N).fill(v_boundry(0)).t());
+
+    // Write analytic solution to binary file
     std::string filename_2 = "analytic_solution.bin";
     U.save(filename_2);
 
