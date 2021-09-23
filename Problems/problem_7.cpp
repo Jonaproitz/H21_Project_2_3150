@@ -3,7 +3,7 @@
 
 int main(){
     // Set constants
-    int n = 6;
+    int n = 10;
 
     float h = 1. / n;
 
