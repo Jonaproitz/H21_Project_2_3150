@@ -11,8 +11,8 @@ int main(){
 
     // Create x^ vector and boundry conditions
     arma::vec x = arma::linspace(h, 1. - h, N);
-    arma::vec x_0 = arma::vec(1).fill(0.);
-    arma::vec x_n = arma::vec(1).fill(1.);
+    arma::vec x_0 = {0.};
+    arma::vec x_n = {1.};
 
     // Calculate more constants
     double a = -1 / (h*h);
@@ -27,6 +27,10 @@ int main(){
     bool converged;
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
 
+    // Set boundryconditions for v
+    arma::vec v_boundry = {0.};
+
+    
 
 
     return 0;
