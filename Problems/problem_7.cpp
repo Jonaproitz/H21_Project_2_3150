@@ -39,7 +39,6 @@ int main(){
     for (int i = 1; i < x.size()-1; i++){
         V.col(i) = join_cols(v_boundry, eigenvectors.col(i-1), v_boundry);
     }
-    V.print();
     
 
     // Write solution to binary file
