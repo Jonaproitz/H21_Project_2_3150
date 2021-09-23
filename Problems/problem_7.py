@@ -20,7 +20,11 @@ U = np.transpose(np.array(analytic_solution))
 plt.figure()
 
 for i in range(3):
-    plt.plot(x, V[i])
-    plt.plot(x, U[i], "--")
+    v = V[i]
+    u = U[i]
+    if np.allclose(v, -u):
+        v = -v
+    plt.plot(x, v)
+    plt.plot(x, u, "--")
 
 plt.show()
