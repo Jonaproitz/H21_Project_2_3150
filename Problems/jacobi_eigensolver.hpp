@@ -90,8 +90,14 @@ void jacobi_eigensolver(const arma::mat& A, double eps, arma::vec& eigenvalues,
 
 
     // Store eigenvalues and eigenvectors
+    arma::uvec order = arma::sort_index(A_m.diag(0));
+    
     eigenvalues = arma::sort(A_m.diag(0));
-    eigenvectors = R;
+
+    eigenvectors = arma::mat(order.size(), order.size());
+    for (int i=0; i < order.size(); i++){
+        eigenvectors.col(i) = -R.col(order(i));
+    }
 
     // End function with no return
     return;
