@@ -539,3 +539,5 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,vim,python,c++,latex
 
 iterations.txt
+solution.bin
+
