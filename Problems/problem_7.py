@@ -21,5 +21,6 @@ plt.figure()
 
 for i in range(3):
     plt.plot(x, V[i])
+    plt.plot(x, U[i], "--")
 
 plt.show()
