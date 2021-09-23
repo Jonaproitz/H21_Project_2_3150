@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 
-N = [N for N in range(2, 10)]
+N = [N for N in range(2, 61)]
 iterations = []
 
 for N_i in N:
@@ -11,3 +11,8 @@ for N_i in N:
     with open("iterations.txt") as file:
         iterations.append(int(file.readline()))
 
+plt.figure()
+
+plt.plot(N, iterations)
+
+plt.show()
