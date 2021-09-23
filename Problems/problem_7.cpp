@@ -3,7 +3,7 @@
 
 int main(){
     // Set constants
-    int n = 10;
+    int n = 6;
 
     float h = 1. / n;
 
@@ -29,22 +29,17 @@ int main(){
 
 
     // Set boundry conditions for v
-    arma::vec v_boundry = arma::vec(eigenvalues.size()).fill(0.);
+    arma::vec v_boundry = {0.};//arma::vec(eigenvalues.size()).fill(0.);
 
     // Merge solutions with boundries
     x = join_cols(x_0, x, x_n);
     arma::mat V = arma::mat(x.size(), x.size()-1);
-    
-    arma::vec x_i;
-    x_i = x(0);
-    V.row(0) = join_rows(x_i, v_boundry.t());
-    
+
+    V.col(0) = x;
     for (int i = 1; i < x.size()-1; i++){
-        x_i = {x(i)};
-        V.row(i) = join_rows(x_i, eigenvectors.row(i-1));
+        V.col(i) = join_cols(v_boundry, eigenvectors.col(i-1), v_boundry);
     }
-    x_i = x(x.size()-1);
-    V.row(x.size()-1) = join_rows(x_i, v_boundry.t());
+    V.print();
     
 
     // Write solution to binary file
