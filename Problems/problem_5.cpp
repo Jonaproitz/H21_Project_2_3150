@@ -35,6 +35,7 @@ int main(){
     std::cout << "----\n";
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
     eigenvalues.print();
+    eigenvectors.print();
     
     std::cout << iterations << "\n";
     std::cout << converged << "\n";
