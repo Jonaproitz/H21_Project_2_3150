@@ -5,4 +5,9 @@ import pyarma
 
 filename = "solution.bin"
 solution = pyarma.mat()
-solution = np.array(solution.load(filename))
+solution.load(filename)
+
+sol = np.transpose(np.array(solution))
+x = sol[0]
+V = sol[1:]
+
