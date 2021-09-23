@@ -42,8 +42,19 @@ int main(){
     
 
     // Write solution to binary file
-    std::string filename = "solution.bin";
-    V.save(filename);
+    std::string filename_1 = "solution.bin";
+    V.save(filename_1);
+
+
+    // Call analytic_solution function to find the analytic solution
+    arma::vec lam = arma::vec(N);
+    arma::mat U = arma::mat(N, N);
+
+    // Write analytic solution to binary file
+    analytic_solution(lam, U, a, d);
+    std::string filename_2 = "analytic_solution.bin";
+    U.save(filename_2);
+
 
     return 0;
 }
