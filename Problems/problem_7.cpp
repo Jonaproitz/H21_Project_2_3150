@@ -40,5 +40,10 @@ int main(){
     }
     V.row(x.size()-1) = v_boundry.t();
 
+    // Write solution to binary file
+    arma::mat solution = join_rows(x, V);
+    std::string filename = "solution.bin";
+    solution.save(filename);
+
     return 0;
 }
