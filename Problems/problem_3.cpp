@@ -12,6 +12,7 @@ int main(){
 
     // Setup tridiagonal matrix A
     arma::mat A = create_tridiag_matrix(N, a, d);
+    std::cout << "Matrix A = \n";
     A.print();
 
     //Find eigenvalues of A
@@ -20,7 +21,7 @@ int main(){
 
     arma::eig_sym(eigval, eigvec, A);
 
-    eigval.print();
+    
     eigvec.print();
 
 
@@ -28,8 +29,13 @@ int main(){
     arma::vec lam = arma::vec(N);
     arma::mat V = arma::mat(N, N);
     analytic_solution(lam, V, a, d);
+
+    std::cout << "Eigenvalues calculated by arma::eig_sym vs the analytic solution\n";
+    for (int i = 0; i < eigval.size(); i++){
+        std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n";
+    }
     
-    lam.print();
+ 
     V.print();
 
     // End program
