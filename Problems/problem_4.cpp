@@ -12,7 +12,7 @@ int main(){
     int k;
     int l;
     double a = max_offdiag_symmetric(A, k ,l);
-    std::cout << a << "\n";
+    std::cout << "The largest number is " << a << "\n";
     
     // End program
     return 0;
