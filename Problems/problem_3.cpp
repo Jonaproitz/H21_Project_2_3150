@@ -21,9 +21,6 @@ int main(){
 
     arma::eig_sym(eigval, eigvec, A);
 
-    
-    eigvec.print();
-
 
     // Find analytical eigenvalues and eigenvectors
     arma::vec lam = arma::vec(N);
@@ -31,12 +28,17 @@ int main(){
     analytic_solution(lam, V, a, d);
 
     std::cout << "Eigenvalues calculated by arma::eig_sym vs the analytic solution\n";
-    for (int i = 0; i < eigval.size(); i++){
+    for (int i = 0; i < N; i++){
         std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n";
     }
     
- 
-    V.print();
+    std::cout << "Eigenvectors calculated by arma::eig_sym vs the analytic solution\n";
+    for (int i = 0; i < N; i++){
+        std::cout << "Eigenvector " << i + 1 << "\n";
+        for (int j = 0; j < N; j++){
+            std::cout << "    " << eigvec.col(i)(j) << "    " << V.col(i)(j) << "\n";
+        }
+    }
 
     // End program
     return 0;
