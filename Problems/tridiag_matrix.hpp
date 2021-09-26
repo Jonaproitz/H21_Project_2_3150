@@ -33,21 +33,16 @@ void analytic_solution(arma::vec &lam, arma::mat &V, double a, double d){
 }
 
 
-void compare_eigenvalues(arma::vec &eigval, arma::vec &lam){
-    for (int i = 0; i < lam.size(); i++){
-        std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i)
-                  << "\n    " << "Difference: " << fabs(eigval(i) - lam(i)) << "\n\n";
-    }
-    return;
-}
-
-
-void compare_eigenvectors(arma::mat &eigvec, arma::mat &V){ // Assume normalised eigenvectors
+void compare_eigen(arma::vec &eigval, arma::mat &eigvec, arma::vec &lam, arma::mat &V){ // Assume normalised eigenvectors
     int N = eigvec.n_cols;
     for (int i = 0; i < N; i++){
         if (arma::approx_equal(V.col(i), -eigvec.col(i), "absdiff", 1e-8)){
             eigvec.col(i) = -eigvec.col(i);
         }
+
+        std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i)
+                  << "\n    " << "Difference: " << fabs(eigval(i) - lam(i)) << "\n\n";
+
         std::cout << "Eigenvector " << i + 1 << ":\n";
         for (int j = 0; j < N; j++){
             if (eigvec.col(i)(j) < 0){
@@ -71,7 +66,7 @@ void compare_eigenvectors(arma::mat &eigvec, arma::mat &V){ // Assume normalised
                           << fabs(eigvec.col(i)(j) - V.col(i)(j)) << "\n";
             }
         }
-        std::cout << "\n";
+        std::cout << "\n\n";
     }
     return;
 }

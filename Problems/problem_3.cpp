@@ -26,11 +26,9 @@ int main(){
     arma::mat V = arma::mat(N, N);
     analytic_solution(lam, V, a, d);
 
-    std::cout << "\nEigenvalues calculated by arma::eig_sym vs the analytic solution\n";
-    compare_eigenvalues(eigval, lam);
     
-    std::cout << "Eigenvectors calculated by arma::eig_sym vs the analytic solution\n";
-    compare_eigenvectors(eigvec, V);
+    std::cout << "\n\nEigenvalues and eigenvectors calculated by arma::eig_sym vs the analytic solution\n";
+    compare_eigen(eigval, eigvec, lam, V);
 
     // End program
     return 0;
