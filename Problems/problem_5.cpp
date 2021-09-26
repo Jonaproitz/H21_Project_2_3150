@@ -31,17 +31,13 @@ int main(){
     bool converged;
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
 
+
     std::cout << "\nEigenvalues calculated by jacobi_eigensolver vs the analytic solution\n";
     compare_eigenvalues(eigenvalues, lam);
 
     std::cout << "Eigenvectors calculated by jacobi_eigensolver vs the analytic solution\n";
     compare_eigenvectors(eigenvectors, V);
-    
-    
-    std::cout << iterations << "\n";
 
-    std::cout << std::boolalpha;
-    std::cout << converged << "\n";
 
     // End program
     return 0;
