@@ -39,3 +39,16 @@ void compare_eigval(arma::vec &eigval, arma::vec &lam){
         std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n\n";
     }
 }
+
+
+void compare_eigenvectors(arma::mat &eigvec, arma::mat &V){
+    int N = eigvec.n_cols;
+    std::cout << "Eigenvectors calculated by arma::eig_sym vs the analytic solution\n";
+    for (int i = 0; i < N; i++){
+        std::cout << "Eigenvector " << i + 1 << ":\n";
+        for (int j = 0; j < N; j++){
+            std::cout << "    " << eigvec.col(i)(j) << "    " << V.col(i)(j) << "\n";
+        }
+        std::cout << "\n";
+    }
+}

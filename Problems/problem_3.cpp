@@ -29,14 +29,7 @@ int main(){
 
     compare_eigval(eigval, lam);
     
-    std::cout << "Eigenvectors calculated by arma::eig_sym vs the analytic solution\n";
-    for (int i = 0; i < N; i++){
-        std::cout << "Eigenvector " << i + 1 << ":\n";
-        for (int j = 0; j < N; j++){
-            std::cout << "    " << eigvec.col(i)(j) << "    " << V.col(i)(j) << "\n";
-        }
-        std::cout << "\n";
-    }
+    compare_eigenvectors(eigvec, V);
 
     // End program
     return 0;
