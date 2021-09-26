@@ -4,8 +4,7 @@
 int main(){
     // Setup constants 
     int N = 6;
-    double L = 1.;
-    double h = L/(N-1);
+    double h = 1/(N+1);
 
     double a = -1/(h*h);
     double d = 2/h;
