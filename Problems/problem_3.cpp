@@ -27,7 +27,7 @@ int main(){
     arma::mat V = arma::mat(N, N);
     analytic_solution(lam, V, a, d);
 
-    compare_eigval(eigval, lam);
+    compare_eigenvalues(eigval, lam);
     
     compare_eigenvectors(eigvec, V);
 

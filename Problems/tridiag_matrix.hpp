@@ -33,7 +33,7 @@ void analytic_solution(arma::vec &lam, arma::mat &V, double a, double d){
 }
 
 
-void compare_eigval(arma::vec &eigval, arma::vec &lam){
+void compare_eigenvalues(arma::vec &eigval, arma::vec &lam){
     std::cout << "\nEigenvalues calculated by arma::eig_sym vs the analytic solution\n";
     for (int i = 0; i < lam.size(); i++){
         std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n\n";
