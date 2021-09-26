@@ -37,6 +37,7 @@ void compare_eigenvalues(arma::vec &eigval, arma::vec &lam){
     for (int i = 0; i < lam.size(); i++){
         std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n\n";
     }
+    return;
 }
 
 
@@ -63,4 +64,5 @@ void compare_eigenvectors(arma::mat &eigvec, arma::mat &V){ // Assume normalised
         }
         std::cout << "\n";
     }
+    return;
 }
