@@ -42,7 +42,11 @@ void compare_eigenvalues(arma::vec &eigval, arma::vec &lam){
 
 void compare_eigenvectors(arma::mat &eigvec, arma::mat &V){
     int N = eigvec.n_cols;
+    double tol = 1e-8;
     for (int i = 0; i < N; i++){
+        if (fabs(eigvec.col(i)(0) + V.col(i)(0)) < tol){
+            V.col(i) = -V.col(i);
+        }
         std::cout << "Eigenvector " << i + 1 << ":\n";
         for (int j = 0; j < N; j++){
             std::cout << "    " << eigvec.col(i)(j) << "    " << V.col(i)(j) << "\n";
