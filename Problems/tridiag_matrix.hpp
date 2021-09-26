@@ -48,7 +48,18 @@ void compare_eigenvectors(arma::mat &eigvec, arma::mat &V){ // Assume normalised
         }
         std::cout << "Eigenvector " << i + 1 << ":\n";
         for (int j = 0; j < N; j++){
-            std::cout << "    " << eigvec.col(i)(j) << "    " << V.col(i)(j) << "\n";
+            if (eigvec.col(i)(j) < 0){
+                std::cout << "    " << eigvec.col(i)(j) << "    ";
+            }
+            else{
+                std::cout << "     " << eigvec.col(i)(j) << "    ";
+            }
+            if (V.col(i)(j) < 0){
+                std::cout << V.col(i)(j) << "\n";
+            }
+            else{
+                std::cout << " " << V.col(i)(j) << "\n";
+            }
         }
         std::cout << "\n";
     }
