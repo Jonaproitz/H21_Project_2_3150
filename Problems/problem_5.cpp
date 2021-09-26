@@ -31,7 +31,7 @@ int main(){
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
 
 
-    std::cout << "Eigenvalues and eigenvectors calculated by jacobi_eigensolver vs the analytic solution\n";
+    std::cout << "\n\nEigenvalues and eigenvectors calculated by jacobi_eigensolver vs the analytic solution\n";
     compare_eigen(eigenvalues, eigenvectors, lam, V);
 
 
