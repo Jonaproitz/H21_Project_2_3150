@@ -15,12 +15,6 @@ for N_i in N:
 N = np.array(N)
 iterations = np.array(iterations)
 
-
-plt.figure()
-
-plt.plot(N, iterations)
-
-
 def curve(N, a, b, c):
     return a*N**2 + b*N + c 
 
@@ -30,6 +24,10 @@ print(popt)
 
 a, b, c = popt
 
+
+plt.figure()
+
+plt.plot(N, iterations)
 plt.plot(N, curve(N, a, b, c))
 
 plt.show()
