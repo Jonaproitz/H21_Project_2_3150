@@ -14,15 +14,13 @@ int main(){
 
     // Create matrix A of size 6x6
     arma::mat A = create_tridiag_matrix(N, a, d);
+    std::cout << "Matrix A =\n";
     A.print();
 
     // Check analytical solution
     arma::vec lam = arma::vec(N);
     arma::mat V = arma::mat(N, N);
     analytic_solution(lam, V, a, d);
-
-    lam.print();
-    V.print();
 
 
     // Find solution with Jacobi rotation method
@@ -31,13 +29,18 @@ int main(){
     arma::mat eigenvectors;
     int maxiter = 1e6, iterations;
     bool converged;
-
-    std::cout << "----\n";
     jacobi_eigensolver(A, eps, eigenvalues, eigenvectors, maxiter, iterations, converged);
-    eigenvalues.print();
-    eigenvectors.print();
+
+    std::cout << "\nEigenvalues calculated by jacobi_eigensolver vs the analytic solution\n";
+    compare_eigenvalues(eigenvalues, lam);
+
+    std::cout << "Eigenvectors calculated by jacobi_eigensolver vs the analytic solution\n";
+    compare_eigenvectors(eigenvectors, V);
+    
     
     std::cout << iterations << "\n";
+
+    std::cout << std::boolalpha;
     std::cout << converged << "\n";
 
     // End program
