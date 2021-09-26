@@ -33,7 +33,8 @@ void analytic_solution(arma::vec &lam, arma::mat &V, double a, double d){
 }
 
 
-void compare_eigen(arma::vec &eigval, arma::mat &eigvec, arma::vec &lam, arma::mat &V){ // Assume normalised eigenvectors
+void compare_eigen(arma::vec &eigval, arma::mat &eigvec, 
+                   arma::vec &lam, arma::mat &V){ // Assume normalised eigenvectors
     int N = eigvec.n_cols;
     for (int i = 0; i < N; i++){
         if (arma::approx_equal(V.col(i), -eigvec.col(i), "absdiff", 1e-8)){
