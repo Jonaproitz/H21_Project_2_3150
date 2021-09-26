@@ -63,10 +63,12 @@ void compare_eigenvectors(arma::mat &eigvec, arma::mat &V){ // Assume normalised
                 std::cout << " " << V.col(i)(j);
             }
             if (j == 0){
-                std::cout << "    Difference: " << fabs(eigvec.col(i)(j) - V.col(i)(j)) << "\n";
+                std::cout << "    Difference: " 
+                          << fabs(eigvec.col(i)(j) - V.col(i)(j)) << "\n";
             }
             else{
-                std::cout << "                " << fabs(eigvec.col(i)(j) - V.col(i)(j)) << "\n";
+                std::cout << "                " 
+                          << fabs(eigvec.col(i)(j) - V.col(i)(j)) << "\n";
             }
         }
         std::cout << "\n";
