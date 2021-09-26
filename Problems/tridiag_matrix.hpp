@@ -35,7 +35,8 @@ void analytic_solution(arma::vec &lam, arma::mat &V, double a, double d){
 
 void compare_eigenvalues(arma::vec &eigval, arma::vec &lam){
     for (int i = 0; i < lam.size(); i++){
-        std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n\n";
+        std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i)
+                  << "\n    " << "Difference: " << fabs(eigval(i) - lam(i)) << "\n\n";
     }
     return;
 }
