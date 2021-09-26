@@ -27,17 +27,18 @@ int main(){
     arma::mat V = arma::mat(N, N);
     analytic_solution(lam, V, a, d);
 
-    std::cout << "Eigenvalues calculated by arma::eig_sym vs the analytic solution\n";
+    std::cout << "\nEigenvalues calculated by arma::eig_sym vs the analytic solution\n";
     for (int i = 0; i < N; i++){
-        std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n";
+        std::cout << "Eigenvalue " << i + 1 << ":\n    " << eigval(i) << ", " << lam(i) << "\n\n";
     }
     
     std::cout << "Eigenvectors calculated by arma::eig_sym vs the analytic solution\n";
     for (int i = 0; i < N; i++){
-        std::cout << "Eigenvector " << i + 1 << "\n";
+        std::cout << "Eigenvector " << i + 1 << ":\n";
         for (int j = 0; j < N; j++){
             std::cout << "    " << eigvec.col(i)(j) << "    " << V.col(i)(j) << "\n";
         }
+        std::cout << "\n";
     }
 
     // End program
