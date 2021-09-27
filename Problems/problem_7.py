@@ -27,4 +27,4 @@ for i in range(3):
     plt.plot(x, v)
     plt.plot(x, u, "--")
 
-plt.show()
+plt.savefig("Eigenvec.pdf")
