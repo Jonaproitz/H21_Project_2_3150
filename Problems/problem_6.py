@@ -26,8 +26,12 @@ a, b, c = popt
 
 
 plt.figure()
+plt.title("Iterations", fontsize=15)
 
-plt.plot(N, iterations)
-plt.plot(N, curve(N, a, b, c))
+plt.plot(N, iterations, label="Number of iterations")
+plt.plot(N, curve(N, a, b, c), label="Fitted curve")
 
+plt.xlabel("N", fontsize=12)
+plt.ylabel("Iterations", fontsize=12)
+plt.legend()
 plt.show()
