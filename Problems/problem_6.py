@@ -26,7 +26,7 @@ a, b, c = popt
 
 
 plt.figure()
-plt.title("Iterations", fontsize=15)
+plt.title("Change in number of iterations as a function of N", fontsize=15)
 
 plt.plot(N, iterations, label="Number of iterations")
 plt.plot(N, curve(N, a, b, c), label="Fitted curve")
