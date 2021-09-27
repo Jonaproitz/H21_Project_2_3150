@@ -24,7 +24,8 @@ for i in range(3):
     u = U[i]
     if np.allclose(v, -u):
         v = -v
-    plt.plot(x, v)
-    plt.plot(x, u, "--")
+    plt.plot(x, v, label = "Numerical solution")
+    plt.plot(x, u, "--", label = "Analytical solution")
 
-plt.savefig("../LaTeX/Eigenvec.pdf")
+plt.legend()
+plt.savefig("../LaTeX/Eigenvec10.pdf")
