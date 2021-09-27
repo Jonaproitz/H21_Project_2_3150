@@ -8,7 +8,7 @@ N = [N for N in range(2, 61)]
 iterations = []
 
 for N_i in N:
-    os.system(f"~/Documents/Sem_7/FYS3150/Project_2/Problems/Problem_6.exe {N_i}")
+    os.system(f"./Problem_6.exe {N_i}")
     with open("iterations.txt") as file:
         iterations.append(int(file.readline()))
 
@@ -34,4 +34,4 @@ plt.plot(N, curve(N, a, b, c), label="Fitted curve")
 plt.xlabel("N", fontsize=12)
 plt.ylabel("Iterations", fontsize=12)
 plt.legend()
-plt.savefig("Iterations.pdf")
+plt.savefig("../LaTeX/Iterations.pdf")
